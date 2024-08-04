@@ -106,10 +106,15 @@ fetchAndLogData();
 function rejectAfterTimeout() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            reject("Promise rejected after timeout");
+            console.log("Promise rejected after timeout");
+            reject();
         }, 2000);
-    });
+    }).catch(()=>{
+        console.log("200");
+    })
 }
+
+rejectAfterTimeout()
 
 // Async function that waits for the promise to reject and logs the rejected value
 const waitAndLogRejectedValue = async (promise) => {
