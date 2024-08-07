@@ -75,3 +75,23 @@ function display(data) {
 }
 
 match()
+
+async function madeIn(){
+    let promise = new Promise((resolve, reject) => {    
+        setTimeout(() => {
+            resolve("done!")
+        }, 1000)
+    }).then((data)=>{
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("done!_____",data)
+            }, 2000)
+        })
+    })
+    const data = await promise
+    display(data)
+}
+function display(data){
+    console.log(data)
+}
+madeIn()
